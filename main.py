@@ -8,6 +8,7 @@
 
 from notas.menu import menu
 from notas.ingresar_notas import ingresar_notas
+from notas.calculos import calcular_estadisticas
 
 """la buena practica dice que debe tener el mismo nombre del archivo"""
 def main():
@@ -19,21 +20,21 @@ def main():
         opcion = input("ingrese una opcion ")
 
         if opcion == "1":
-            ingresar_notas()
-            print(f"notas ingresadas son {notas: }")
+            notas = ingresar_notas()
+            print(f"notas ingresadas son {notas}")
 
 
         elif opcion == "2":
-
-
+            if calcular_estadisticas(notas) == None:
+                print("no hay ingreso de notas, favor agregar")
+                notas = ingresar_notas()
+        
         elif opcion == "3":
-            """esto para mostrar resultados en pantalla"""
-            print (f"""
-promedio : {promedio}
-minimo   : {menor}
-mayo     : {mayor}
-aprobado : {aprobado}
-""")
+           """esto para mostrar resultados en pantalla"""
+           estadisticas = calcular_estadisticas(notas)
+           print(estadisticas)
+
+
         else:
             print("terminado")
             break

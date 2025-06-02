@@ -27,3 +27,4 @@ def calcular_estadisticas(notas:list[float]) -> dict :
         print (aprobado) """
     except ZeroDivisionError:
         print("no hay notas agregadas")
+        return none
