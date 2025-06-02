@@ -27,15 +27,35 @@ def main():
 
         if opcion == "1":
             n = input("ingresa las notas (el formato debe ser ingresado con espacios 7.0 3.5 6.7)")
-            """para ingresar varias"""
+            """para ingresar varias notas"""
             n = n.split(" ")
-            print("1")
-            break
+            """para cada nota en nuestra lista de notas se va a transformar en float. esto es un comprehension"""
+            notas =[float(nota)for nota in n]
+            print(notas)
         elif opcion == "2":
-            print ("2")
-            break
+            try: 
+                #promedio
+                # mayor
+                #menor
+                # aprobados
+                promedio = sum (notas) / len(notas)
+                mayor = max(notas)
+                menor = min(notas)
+                aprobado = [a for a in notas if a >= 4.0]
+                """print (promedio)
+                print (mayor, menor)
+                print (aprobado) """
+            except ZeroDivisionError:
+                print("no hay notas agregadas")
+
         elif opcion == "3":
-            print ("3")
+            """esto para mostrar resultados en pantalla"""
+            print (f"""
+promedio : {promedio}
+minimo   : {menor}
+mayo     : {mayor}
+aprobado : {aprobado}
+""")
         else:
             print("terminado")
             break
