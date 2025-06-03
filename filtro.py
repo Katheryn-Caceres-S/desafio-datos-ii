@@ -25,24 +25,36 @@ def filtro(precios:dict[str,int], umbral:int, modo:str= "mayor"):
             if v > umbral:
                 mayores.append(k)
 
-        print(mayores)
+        print("Los productos mayores al umbral son:" , mayores)
 
     #filtro menores
     elif modo == "menores":
         menores = []
         """"para cada llave, valor en los items de precios"""
         for k,v in precios.items():
-            """"si el valor es mayor al umbral, se imprime...append funciona para lista y no diccionarios {}"""
+            """"si el valor es menor al umbral, se imprime...append funciona para lista y no diccionarios {}"""
             if v < umbral:
                 menores.append(k)
-        print(menores)
+        print("Los productos menores al umbral son: ", menores)
 
     else:
         print("lo sentimos, esto no es valido")
 
     return
 
-umbral =int(sys.argv[1])
+def main():
+    if len(sys.argv) < 2:
+        print("python filtro.py 'umbral'")
+        sys.exit(1)
+    try:
+        umbral = int(sys.argv[1])
+    except ValueError:
+        print("El umbral debe ser un número entero.")
+        sys.exit(1)
 
+    modo = sys.argv[2] if len(sys.argv) > 2 else "mayor"
 
-filtro(precios,55,"hola")
+    filtro(precios, umbral, modo)
+
+if __name__ == "__main__":
+    main()
